@@ -184,7 +184,7 @@ class _HomePage extends State<HomePage> {
                     onPressed: () async {
                       if (_selectTicket.origin != '선택' &&
                           _selectTicket.destination != '선택') {
-                        await Navigator.push(
+                        final selectedSeat = await Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => SeatPage(
@@ -192,6 +192,14 @@ class _HomePage extends State<HomePage> {
                                     destination: _selectTicket.destination,
                                   )),
                         );
+                        if (selectedSeat != null && selectedSeat is String) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('$selectedSeat'),
+                              duration: Duration(seconds: 3),
+                            ),
+                          );
+                        }
                       } else {
                         print("출발역과 도착역을 선택해주세요.");
                       }
