@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_train_app/page/station/stationlistpage.dart';
+import 'package:flutter_train_app/page/choose/seatpage.dart';
 import 'package:flutter_train_app/page/home/trainticket.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,12 +15,19 @@ class _HomePage extends State<HomePage> {
     origin: '선택',
     destination: '선택',
   );
-  String homePageAppBarTitle = '기차 예매';
+
+  @override
+  void initState() {
+    super.initState();
+    // initState에서 변수 값 출력 (위젯이 처음 생성될 때 한 번만 실행)
+    print('SeatPage - Origin: ${_selectTicket.origin}');
+    print('SeatPage - Destination: ${_selectTicket.destination}');
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: Text('$homePageAppBarTitle')),
+      appBar: AppBar(centerTitle: true, title: const Text('기차 예매')),
       body: Column(
         children: [
           Expanded(
@@ -34,54 +42,57 @@ class _HomePage extends State<HomePage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          minimumSize: Size(120, 200),
-                          backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                      Expanded(
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            minimumSize: Size(120, 200),
+                            backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                           ),
-                        ),
-                        onPressed: () async {
-                          setState(() {
-                            homePageAppBarTitle = '기차 예매';
-                          });
-                          final selecktedStation = await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Stationlistpage(
-                                addTitle: '출발역',
+                          onPressed: () async {
+                            final selecktedStation = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Stationlistpage(
+                                  addTitle: '출발역',
+                                ),
                               ),
-                            ),
-                          );
+                            );
 
-                          if (selecktedStation != null &&
-                              selecktedStation is String) {
-                            setState(() {
-                              _selectTicket = _selectTicket.copyWith(
-                                  origin: selecktedStation);
-                            });
-                          }
-                        },
-                        child: Column(
-                          children: <Widget>[
-                            const Text(
-                              '출발역',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
+                            if (selecktedStation != null &&
+                                selecktedStation is String) {
+                              setState(() {
+                                _selectTicket = _selectTicket.copyWith(
+                                    origin: selecktedStation);
+                              });
+                            }
+                            print(
+                                'HomePage로 돌아왔습니다. 현재 출발역: ${_selectTicket.origin}');
+                          },
+                          child: Column(
+                            children: <Widget>[
+                              const Text(
+                                '출발역',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              _selectTicket.origin,
-                              style: TextStyle(
-                                fontSize: 40,
-                                color: Colors.black,
+                              SizedBox(height: 8),
+                              Text(
+                                _selectTicket.origin,
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  color: Colors.black,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Container(
@@ -94,54 +105,57 @@ class _HomePage extends State<HomePage> {
                           ),
                         ),
                       ),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          minimumSize: Size(120, 200),
-                          backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
+                      Expanded(
+                        child: TextButton(
+                          style: TextButton.styleFrom(
+                            minimumSize: Size(120, 200),
+                            backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
                           ),
-                        ),
-                        onPressed: () async {
-                          setState(() {
-                            homePageAppBarTitle = '기차';
-                          });
-                          final selecktedStation = await Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const Stationlistpage(
-                                addTitle: '도착역',
+                          onPressed: () async {
+                            final selecktedStation = await Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const Stationlistpage(
+                                  addTitle: '도착역',
+                                ),
                               ),
-                            ),
-                          );
+                            );
 
-                          if (selecktedStation != null &&
-                              selecktedStation is String) {
-                            setState(() {
-                              _selectTicket = _selectTicket.copyWith(
-                                  destination: selecktedStation);
-                            });
-                          }
-                        },
-                        child: Column(
-                          children: <Widget>[
-                            const Text(
-                              '도착역',
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold,
+                            if (selecktedStation != null &&
+                                selecktedStation is String) {
+                              setState(() {
+                                _selectTicket = _selectTicket.copyWith(
+                                    destination: selecktedStation);
+                              });
+                            }
+                            print(
+                                'HomePage로 돌아왔습니다. 현재 출발역: ${_selectTicket.destination}');
+                          },
+                          child: Column(
+                            children: <Widget>[
+                              const Text(
+                                '도착역',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 8),
-                            Text(
-                              _selectTicket.destination,
-                              style: TextStyle(
-                                fontSize: 40,
-                                color: Colors.black,
+                              SizedBox(height: 8),
+                              Text(
+                                _selectTicket.destination,
+                                style: TextStyle(
+                                  fontSize: 40,
+                                  color: Colors.black,
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -167,8 +181,20 @@ class _HomePage extends State<HomePage> {
                         borderRadius: BorderRadius.circular(20),
                       ),
                     ),
-                    onPressed: () {
-                      print('버튼을 눌렀습니다.');
+                    onPressed: () async {
+                      if (_selectTicket.origin != '선택' &&
+                          _selectTicket.destination != '선택') {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SeatPage(
+                                    origin: _selectTicket.origin,
+                                    destination: _selectTicket.destination,
+                                  )),
+                        );
+                      } else {
+                        print("출발역과 도착역을 선택해주세요.");
+                      }
                     },
                     child: Column(
                       children: <Widget>[
