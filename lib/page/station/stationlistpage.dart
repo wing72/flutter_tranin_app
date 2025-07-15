@@ -18,8 +18,10 @@ class Stationlistpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     final List<String> stationTrim = ['수서', '동탄', '평택지제', '천안아산', '오송', '대전', '김천구미', '동대구', '경주', '울산', '부산'];
     return Scaffold(
+      backgroundColor: isDark ? Color(0xFF1C1C1C) : Colors.white,
       appBar: AppBar(centerTitle: true, title: Text(addTitle), leading: const BackButton()),
       body: Column(
         children: stationTrim

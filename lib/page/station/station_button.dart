@@ -10,6 +10,7 @@ class StationButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -23,12 +24,12 @@ class StationButton extends StatelessWidget {
           onPressed: () {
             Navigator.pop(context, '$stationName');
           },
-          child: Text(stationName, style: TextStyle(color: Colors.black)),
+          child: Text(stationName, style: TextStyle(color: isDark ? Colors.grey[400] : Colors.black)),
         ),
         Container(
           height: 2,
           width: 100,
-          color: Colors.grey[300],
+          color: isDark ? Colors.grey[400] : Colors.grey[300],
         ),
       ],
     );

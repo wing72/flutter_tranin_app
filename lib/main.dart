@@ -11,7 +11,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HomePage(),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primarySwatch: Colors.blue,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        primarySwatch: Colors.blue,
+      ),
+      themeMode: ThemeMode.dark,
+      // themeMode: ThemeMode.system, // 시스템 설정에 따라 자동 전환
+      home: const HomePage(),
     );
   }
 }

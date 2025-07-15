@@ -13,13 +13,22 @@ class SelectSeatButton extends StatelessWidget {
     required this.destination,
   });
 
+  Color _getButtonColor({required bool isReady, required bool isDark}) {
+    if (isReady) {
+      return isDark ? Color(0xFF2A2A2A) : Colors.white;
+    } else {
+      return isDark ? Colors.purple : Colors.grey;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     // 출발역과 도착역이 모두 선택되었는지 변수 확인
     final bool isReady = origin != '선택' && destination != '선택';
 
     return Container(
-      color: Colors.grey[200],
+      color: isDark ? Color(0xFF1C1C1C) : Colors.grey[200],
       // 버튼이 항상 중앙에 오도록 Center 위젯으로 감쌉니다.
       child: Center(
         child: SizedBox(
@@ -28,7 +37,7 @@ class SelectSeatButton extends StatelessWidget {
           child: TextButton(
             style: TextButton.styleFrom(
               // 둘다 고르면 보라색으로 활성화되고 안골라져 있으면 회색으로 비활성화
-              backgroundColor: isReady ? Colors.purple : Colors.grey,
+              backgroundColor: _getButtonColor(isReady: isReady, isDark: isDark),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -51,11 +60,11 @@ class SelectSeatButton extends StatelessWidget {
               }
             },
             // Column 없이 Text만 사용해서 코드를 간결하게 합니다.
-            child: const Text(
+            child: Text(
               '좌석 선택',
               style: TextStyle(
                 fontSize: 18,
-                color: Colors.white,
+                color: isDark ? Colors.grey[400] : Colors.white,
                 fontWeight: FontWeight.bold,
               ),
             ),

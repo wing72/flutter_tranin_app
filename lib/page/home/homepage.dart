@@ -19,15 +19,19 @@ class _HomePage extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark; //다크모드 확인 변수
     String selectedOrigin = _selectTicket.origin;
     String selectedDestination = _selectTicket.destination;
     return Scaffold(
-      appBar: AppBar(centerTitle: true, title: const Text('기차 예매')),
-      backgroundColor: Colors.grey[200],
+      backgroundColor: isDark ? Color(0xFF1C1C1C) : Colors.grey[200],
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
+            AppBar(
+              title: Text('가차 예매'),
+              centerTitle: true,
+            ),
             Container(
               height: 250,
             ),

@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_train_app/page/home/trainticket.dart'; // TrainTicket 모델
-
-// 컴포넌트 파일들을 import 합니다.
 import 'package:flutter_train_app/page/choose/widget/sc_button.dart';
+import 'package:flutter_train_app/page/home/trainticket.dart'; // TrainTicket 모델
 import 'package:flutter_train_app/page/choose/widget/seat_widget.dart';
 import 'package:flutter_train_app/page/choose/widget/seat_header.dart';
 
@@ -42,13 +40,15 @@ class _SeatPage extends State<SeatPage> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Scaffold(
+      backgroundColor: isDark ? Color(0xFF1C1C1C) : Colors.grey[200],
+
       appBar: AppBar(
         centerTitle: true,
         title: const Text("좌석 선택"),
         leading: const BackButton(),
       ),
-      // [이동 및 수정] 버튼을 Column 밖 Scaffold의 bottomNavigationBar로 이동
       // 이렇게 하면 스크롤과 상관없이 항상 하단에 고정됩니다.
       body: Column(
         children: <Widget>[
@@ -59,13 +59,15 @@ class _SeatPage extends State<SeatPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(_selectTicket.origin,
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.purple)),
+                    style: TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold, color: isDark ? Color(0xFFA374DB) : Colors.purple)),
                 const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.0),
                   child: Icon(Icons.arrow_forward, color: Colors.grey),
                 ),
                 Text(_selectTicket.destination,
-                    style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.purple)),
+                    style: TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold, color: isDark ? Color(0xFFA374DB) : Colors.purple)),
               ],
             ),
           ),
@@ -84,7 +86,6 @@ class _SeatPage extends State<SeatPage> {
           ),
           const SizedBox(height: 10),
 
-          // [교체] 고정된 헤더 대신 SeatHeader 컴포넌트를 사용합니다.
           SeatHeader(
             seatSize: _seatSize,
             seatMargin: _seatMargin,
@@ -119,6 +120,16 @@ class _SeatPage extends State<SeatPage> {
               },
             ),
           ),
+          Sc_BookingButton(
+              selectedSeat: _selectedSeat,
+              onBooked: () {
+                // 예매가 성공적으로 완료되었을 때 실행할 로직
+                if (_selectedSeat != null) {
+                  print('예매 성공! 좌석: $_selectedSeat');
+                  // 예: 예매 완료 페이지로 이동하거나 홈으로 돌아가기
+                  // Navigator.of(context).popUntil((route) => route.isFirst);
+                }
+              })
         ],
       ),
     );

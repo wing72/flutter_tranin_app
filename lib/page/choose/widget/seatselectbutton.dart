@@ -69,8 +69,7 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('좌석 선택'),
-        elevation: 1,
+        title: Text('좌석 선택'),
       ),
       body: Column(
         children: [
@@ -101,6 +100,7 @@ class _SeatSelectionPageState extends State<SeatSelectionPage> {
             ),
           ),
         ],
+        
       ),
     );
   }

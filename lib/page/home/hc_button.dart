@@ -18,10 +18,11 @@ class Hc_Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       height: 200,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? Color(0xFF2A2A2A) : Colors.white,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Row(
@@ -33,9 +34,9 @@ class Hc_Button extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('출발역', style: TextStyle(fontSize: 16, color: Colors.grey)),
+                  Text('출발역', style: TextStyle(fontSize: 16, color: isDark ? Colors.grey[100] : Colors.grey)),
                   const SizedBox(height: 4),
-                  Text(origin, style: const TextStyle(fontSize: 40, color: Colors.black)), // 외부에서 전달받은 데이터 사용
+                  Text(origin, style: TextStyle(fontSize: 40, color: isDark ? Colors.grey[400] : Colors.black)),
                 ],
               ),
             ),
@@ -51,9 +52,11 @@ class Hc_Button extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text('도착역', style: TextStyle(fontSize: 16, color: Colors.grey)),
+                  Text('도착역', style: TextStyle(fontSize: 16, color: isDark ? Colors.grey[100] : Colors.grey)),
                   const SizedBox(height: 4),
-                  Text(destination, style: const TextStyle(fontSize: 40, color: Colors.black)), // 외부에서 전달받은 데이터 사용
+                  Text(destination,
+                      style:
+                          TextStyle(fontSize: 40, color: isDark ? Colors.grey[400] : Colors.black)), // 외부에서 전달받은 데이터 사용
                 ],
               ),
             ),
