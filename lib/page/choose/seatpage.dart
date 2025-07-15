@@ -50,28 +50,6 @@ class _SeatPage extends State<SeatPage> {
       ),
       // [이동 및 수정] 버튼을 Column 밖 Scaffold의 bottomNavigationBar로 이동
       // 이렇게 하면 스크롤과 상관없이 항상 하단에 고정됩니다.
-      bottomNavigationBar: Sc_BookingButton(
-        selectedSeat: _selectedSeat,
-        onBooked: () {
-          // 예매 확정 로직 (예: 다이얼로그 표시)
-          if (_selectedSeat != null) {
-            showCupertinoDialog(
-              context: context,
-              builder: (context) => CupertinoAlertDialog(
-                title: const Text('예매 완료'),
-                content: Text('${_selectTicket.origin} -> ${_selectTicket.destination}\n$_selectedSeat 좌석이 예매되었습니다.'),
-                actions: [
-                  CupertinoDialogAction(
-                    isDefaultAction: true,
-                    child: const Text('확인'),
-                    onPressed: () => Navigator.pop(context),
-                  ),
-                ],
-              ),
-            );
-          }
-        },
-      ),
       body: Column(
         children: <Widget>[
           // 상단 출발/도착 정보
