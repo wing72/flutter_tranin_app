@@ -61,9 +61,9 @@ class _SeatPage extends State<SeatPage> {
                 Text(_selectTicket.origin,
                     style: TextStyle(
                         fontSize: 24, fontWeight: FontWeight.bold, color: isDark ? Color(0xFFA374DB) : Colors.purple)),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.0),
-                  child: Icon(Icons.arrow_forward, color: Colors.grey),
+                  child: Icon(Icons.arrow_circle_right_outlined, color: isDark ? Colors.black : Colors.white),
                 ),
                 Text(_selectTicket.destination,
                     style: TextStyle(
@@ -75,12 +75,8 @@ class _SeatPage extends State<SeatPage> {
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(Icons.square_rounded, color: Colors.purple),
-              SizedBox(width: 4),
               Text('선택됨'),
-              SizedBox(width: 20),
-              Icon(Icons.square_rounded, color: Colors.white), // Colors.grey[300]
-              SizedBox(width: 4),
+              SizedBox(width: 50),
               Text('선택 가능'),
             ],
           ),

@@ -13,14 +13,6 @@ class SelectSeatButton extends StatelessWidget {
     required this.destination,
   });
 
-  Color _getButtonColor({required bool isReady, required bool isDark}) {
-    if (isReady) {
-      return isDark ? Color(0xFF2A2A2A) : Colors.white;
-    } else {
-      return isDark ? Colors.purple : Colors.grey;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
@@ -37,7 +29,7 @@ class SelectSeatButton extends StatelessWidget {
           child: TextButton(
             style: TextButton.styleFrom(
               // 둘다 고르면 보라색으로 활성화되고 안골라져 있으면 회색으로 비활성화
-              backgroundColor: _getButtonColor(isReady: isReady, isDark: isDark),
+              backgroundColor: isReady ? Colors.purple : Colors.grey[400],
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),

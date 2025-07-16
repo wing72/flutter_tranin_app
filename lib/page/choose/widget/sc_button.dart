@@ -11,14 +11,6 @@ class Sc_BookingButton extends StatelessWidget {
     this.onBooked,
   });
 
-  Color _getButtonColor({required bool isSeatSelected, required bool isDark}) {
-    if (isSeatSelected) {
-      return isDark ? Color(0xFFA374DB) : Colors.white;
-    } else {
-      return isDark ? Colors.purple : Colors.grey;
-    }
-  }
-
   Future<void> _showBookingDialog(BuildContext context) async {
     if (selectedSeat == null) return; // 선택이 되어있는지 확인하는 조건
 
@@ -61,7 +53,7 @@ class Sc_BookingButton extends StatelessWidget {
         onPressed: isSeatSelected ? () => _showBookingDialog(context) : null,
         style: ElevatedButton.styleFrom(
           minimumSize: const Size(375, 50),
-          backgroundColor: _getButtonColor(isSeatSelected: isSeatSelected, isDark: isDark),
+          backgroundColor: isSeatSelected ? Colors.purple : Colors.grey[400],
         ),
         child: Text(
           '예매하기',

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.blue,
       ),
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.system,
       // themeMode: ThemeMode.system, // 시스템 설정에 따라 자동 전환
       home: const HomePage(),
     );

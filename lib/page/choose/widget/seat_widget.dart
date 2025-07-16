@@ -14,7 +14,6 @@ class SeatWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark; //다크모드 확인 변수
     return GestureDetector(
       onTap: onTap,
       child: Container(
