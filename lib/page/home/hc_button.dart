@@ -21,6 +21,7 @@ class Hc_Button extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     return Container(
       height: 200,
+      margin: const EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
         color: isDark ? Color(0xFF2A2A2A) : Colors.white,
         borderRadius: BorderRadius.circular(20),
@@ -34,7 +35,9 @@ class Hc_Button extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('출발역', style: TextStyle(fontSize: 16, color: isDark ? Colors.grey[100] : Colors.grey)),
+                  Text('출발역',
+                      style: TextStyle(
+                          fontSize: 16, color: isDark ? Colors.grey[100] : Colors.grey, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 4),
                   Text(origin, style: TextStyle(fontSize: 40, color: isDark ? Colors.grey[400] : Colors.black)),
                 ],
@@ -52,7 +55,9 @@ class Hc_Button extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('도착역', style: TextStyle(fontSize: 16, color: isDark ? Colors.grey[100] : Colors.grey)),
+                  Text('도착역',
+                      style: TextStyle(
+                          fontSize: 16, color: isDark ? Colors.grey[100] : Colors.grey, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 4),
                   Text(destination,
                       style:

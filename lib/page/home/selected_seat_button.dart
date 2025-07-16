@@ -24,7 +24,7 @@ class SelectSeatButton extends StatelessWidget {
       // 버튼이 항상 중앙에 오도록 Center 위젯으로 감쌉니다.
       child: Center(
         child: SizedBox(
-          width: 390,
+          width: 375,
           height: 50,
           child: TextButton(
             style: TextButton.styleFrom(

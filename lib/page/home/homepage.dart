@@ -24,66 +24,64 @@ class _HomePage extends State<HomePage> {
     String selectedDestination = _selectTicket.destination;
     return Scaffold(
       backgroundColor: isDark ? Color(0xFF1C1C1C) : Colors.grey[200],
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Column(
-          children: [
-            AppBar(
-              title: Text('가차 예매'),
-              centerTitle: true,
-            ),
-            Container(
-              height: 250,
-            ),
-            // 1. 출발/도착역 선택 버튼
-            Hc_Button(
-              origin: _selectTicket.origin,
-              destination: _selectTicket.destination,
-              onOriginPressed: () async {
-                print('넘겨주는 출발역: $selectedOrigin'); // "수서"가 출력되어야 함
-                final selectedStation = await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Stationlistpage(
-                      addTitle: '출발역',
-                      origin: selectedOrigin,
-                      destination: selectedDestination,
-                    ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          AppBar(
+            title: Text('가차 예매'),
+            centerTitle: true,
+          ),
+          Container(
+            height: 250,
+          ),
+          // 1. 출발/도착역 선택 버튼
+          Hc_Button(
+            origin: _selectTicket.origin,
+            destination: _selectTicket.destination,
+            onOriginPressed: () async {
+              print('넘겨주는 출발역: $selectedOrigin'); // "수서"가 출력되어야 함
+              final selectedStation = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Stationlistpage(
+                    addTitle: '출발역',
+                    origin: selectedOrigin,
+                    destination: selectedDestination,
                   ),
-                );
-                if (selectedStation != null && selectedStation is String) {
-                  setState(() {
-                    _selectTicket = _selectTicket.copyWith(origin: selectedStation);
-                  });
-                }
-              },
-              onDestinationPressed: () async {
-                final selectedStation = await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Stationlistpage(
-                      addTitle: '도착역',
-                      origin: selectedOrigin,
-                      destination: selectedDestination,
-                    ),
+                ),
+              );
+              if (selectedStation != null && selectedStation is String) {
+                setState(() {
+                  _selectTicket = _selectTicket.copyWith(origin: selectedStation);
+                });
+              }
+            },
+            onDestinationPressed: () async {
+              final selectedStation = await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Stationlistpage(
+                    addTitle: '도착역',
+                    origin: selectedOrigin,
+                    destination: selectedDestination,
                   ),
-                );
-                if (selectedStation != null && selectedStation is String) {
-                  setState(() {
-                    _selectTicket = _selectTicket.copyWith(destination: selectedStation);
-                  });
-                }
-              },
-            ),
-            const SizedBox(height: 20),
-            // 3. 좌석 선택 버튼
-            SelectSeatButton(
-              origin: _selectTicket.origin,
-              destination: _selectTicket.destination,
-            ),
-            const Spacer(),
-          ],
-        ),
+                ),
+              );
+              if (selectedStation != null && selectedStation is String) {
+                setState(() {
+                  _selectTicket = _selectTicket.copyWith(destination: selectedStation);
+                });
+              }
+            },
+          ),
+          const SizedBox(height: 20),
+          // 3. 좌석 선택 버튼
+          SelectSeatButton(
+            origin: _selectTicket.origin,
+            destination: _selectTicket.destination,
+          ),
+          const Spacer(),
+        ],
       ),
     );
   }
