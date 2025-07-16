@@ -23,7 +23,7 @@ class SeatHeader extends StatelessWidget {
         width: seatSize + (seatMargin * 2),
         height: seatSize,
         alignment: Alignment.center,
-        child: Text(label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        child: Text(label, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
       );
     }
 
