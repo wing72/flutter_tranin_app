@@ -1,6 +1,7 @@
  # <p align="center"> :tram: 트레인 앱 완성! :tram:</p>
 
 
+
  ### :closed_book:프로젝트 기능:closed_book:
  
 ## 1. :suspension_railway:출발역과 도착역을 고르는 기능
@@ -13,6 +14,14 @@
 
 ## 5. :warning:고른 역은 보이지 않도록 해주는 기능
 
-### 기술 스택
+### :hammer:기술 스택:hammer:
 
 ## flutter, dart
+
+## :wrench:유지보수 및 개선사항:wrench:
+
+## 이슈 내용
+# - 이슈 상황: dart 모드 진입시 너무 검점색이라 잘안보이는 문제가 있었음
+# - 대응: dart모드 바탕색을 0xFF2A2A2A으로 통일
+# - 향후 계획: 다크모드 때문에 색에 대해 관심이 많이 생김 다크모드에 맞는 색도 많이 생각해봐야 할듯
+
