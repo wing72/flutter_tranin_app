@@ -1,6 +1,7 @@
  # <p align="center"> :tram: 트레인 앱 완성! :tram:</p>
 
-
+<img width="1080" height="2400" alt="Image" src="https://github.com/user-attachments/assets/255bb63a-3354-4431-8c41-497fd2dec2d6" />
+<img width="246" height="495" alt="Image" src="https://github.com/user-attachments/assets/a15218af-1086-478a-95c2-63a76b2bbca5" />
 
  ### :closed_book:프로젝트 기능:closed_book:
  
